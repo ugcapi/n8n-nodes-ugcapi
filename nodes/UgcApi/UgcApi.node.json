@@ -1,0 +1,18 @@
+{
+	"node": "n8n-nodes-ugcapi.ugcApi",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Marketing & Content"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://github.com/ugcapi/n8n-nodes-ugcapi#authentication"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://github.com/ugcapi/n8n-nodes-ugcapi#readme"
+			}
+		]
+	}
+}

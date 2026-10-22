@@ -1,0 +1,65 @@
+{
+	"name": "n8n-nodes-ugcapi",
+	"version": "1.0.0",
+	"description": "Publish and schedule UGC videos, slideshows and images to TikTok and Instagram with the UGC API REST API.",
+	"license": "MIT",
+	"homepage": "https://ugcapi.dev",
+	"keywords": [
+		"n8n-community-node-package",
+		"n8n",
+		"ugcapi",
+		"ugc",
+		"tiktok",
+		"instagram",
+		"social-media",
+		"scheduling"
+	],
+	"author": {
+		"name": "UGC API",
+		"url": "https://ugcapi.dev",
+		"email": "hello@ugcapi.dev"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ugcapi/n8n-nodes-ugcapi.git"
+	},
+	"bugs": {
+		"url": "https://github.com/ugcapi/n8n-nodes-ugcapi/issues"
+	},
+	"scripts": {
+		"build": "n8n-node build",
+		"dev": "n8n-node dev",
+		"lint": "n8n-node lint && eslint . --max-warnings=0",
+		"lint:fix": "n8n-node lint --fix",
+		"test": "npm run build && node --test tests/*.test.cjs",
+		"prepublishOnly": "npm test && npm run review",
+		"format": "prettier --write .",
+		"format:check": "prettier --check .",
+		"review": "npm run format:check && npm run lint && node scripts/review.mjs"
+	},
+	"files": [
+		"dist",
+		"examples"
+	],
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"strict": true,
+		"credentials": [
+			"dist/credentials/UgcApiApi.credentials.js"
+		],
+		"nodes": [
+			"dist/nodes/UgcApi/UgcApi.node.js"
+		]
+	},
+	"devDependencies": {
+		"@n8n/node-cli": "0.51.4",
+		"typescript": "5.9.2",
+		"eslint": "9.32.0",
+		"prettier": "3.6.2",
+		"@types/node": "22.19.15",
+		"@n8n/scan-community-package": "0.38.0"
+	},
+	"peerDependencies": {
+		"n8n-workflow": "*"
+	}
+}

@@ -1,0 +1,55 @@
+{
+	"name": "UGC API: schedule a post",
+	"nodes": [
+		{
+			"parameters": {},
+			"id": "manual",
+			"name": "Manual Trigger",
+			"type": "n8n-nodes-base.manualTrigger",
+			"typeVersion": 1,
+			"position": [0, 0]
+		},
+		{
+			"parameters": {
+				"resource": "report",
+				"operation": "getUsage"
+			},
+			"id": "usage",
+			"name": "Check Credits",
+			"type": "n8n-nodes-ugcapi.ugcApi",
+			"typeVersion": 1,
+			"position": [260, 0]
+		},
+		{
+			"parameters": {
+				"resource": "post",
+				"operation": "create",
+				"accounts": [],
+				"format": "video",
+				"media": "https://ugcapi.dev/samples/morning-routine.mp4",
+				"caption": "Morning routine in 19 seconds #ugc",
+				"postFields": {
+					"scheduledAt": "={{ $now.plus(1, 'day').toISO() }}",
+					"tiktokPrivacy": "PUBLIC_TO_EVERYONE"
+				}
+			},
+			"id": "post",
+			"name": "Schedule Post",
+			"type": "n8n-nodes-ugcapi.ugcApi",
+			"typeVersion": 1,
+			"position": [520, 0]
+		}
+	],
+	"connections": {
+		"Manual Trigger": {
+			"main": [[{ "node": "Check Credits", "type": "main", "index": 0 }]]
+		},
+		"Check Credits": {
+			"main": [[{ "node": "Schedule Post", "type": "main", "index": 0 }]]
+		}
+	},
+	"active": false,
+	"settings": {
+		"executionOrder": "v1"
+	}
+}
